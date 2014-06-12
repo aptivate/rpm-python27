@@ -16,9 +16,9 @@
 
 #  Define Constants
 %define name python27
-%define version 2.7.6
+%define version 2.7.7
 %define libvers 2.7
-%define release 1
+%define release 1.av140603
 %define __prefix /usr
 
 
@@ -54,8 +54,8 @@
 
 
 #  Build shared libraries or .a library?
-%define config_sharedlib yes
 %define config_sharedlib no
+%define config_sharedlib yes
 
 
 #  Location of the HTML directory to place tho documentation in?
@@ -175,6 +175,9 @@ formats.
 %endif
 
 %changelog
+* Tue Jun 3 2014 tomd [2.7.7]
+- Updated to 2.7.7
+
 * Mon Apr 14 2014 Cornfeedhobo <cornfeedhobo@fuzzlabs.org> [2.7.6-1]
 - Updated to 2.7.6
 - Fixed abi dependancy notice
@@ -393,9 +396,9 @@ rm -f mainpkg.files tools.files
 %{__prefix}/%{libdirname}/python%{libvers}/lib-dynload/
 %{__prefix}/%{libdirname}/python%{libvers}/lib2to3/tests/data/
 %{__prefix}/%{libdirname}/pkgconfig/python-%{libvers}.pc
+%{__prefix}/share/man/man1/
 
 %attr(755,root,root) %dir %{__prefix}/include/python%{libvers}
-%attr(755,root,root) %dir %{__prefix}/%{libdirname}/python%{libvers}/
 %attr(755,root,root) %dir %{__prefix}/%{libdirname}/python%{libvers}/
 
 %if %{include_sharedlib}
