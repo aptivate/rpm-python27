@@ -18,7 +18,7 @@
 %define name python27
 %define version 2.7.7
 %define libvers 2.7
-%define release 1.av140603
+%define release 1.av140629
 %define __prefix /usr
 
 
@@ -118,6 +118,11 @@ a programmable interface.  Finally, Python is portable: it runs on many
 brands of UNIX, on PCs under Windows, MS-DOS, and OS/2, and on the
 Mac.
 
+%if %{include_sharedlib}
+%post -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
+%endif
+
 %package devel
 Summary: The libraries and header files needed for Python extension development.
 Requires: %{name} = %{version}-%{release}
@@ -175,6 +180,9 @@ formats.
 %endif
 
 %changelog
+* Sun Jun 29 2014 adrians <adrians@aptivate.org> [2.7.7-1v140629]
+- run /sbin/ldconfig to update dynamic linker cache
+
 * Tue Jun 3 2014 tomd [2.7.7]
 - Updated to 2.7.7
 
